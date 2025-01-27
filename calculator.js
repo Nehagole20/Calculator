@@ -1,23 +1,17 @@
 
-        // Get the display element
-        const display = document.getElementById('display');
+function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
 
-        // Append value to display
-        function appendToDisplay(value) {
-            display.value += value;
-        }
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
 
-        // Clear the display
-        function clearDisplay() {
-            display.value = '';
-        }
-
-        // Calculate the result
-        function calculate() {
-            try {
-                display.value = eval(display.value);
-            } catch (error) {
-                display.value = 'Error';
-                setTimeout(() => clearDisplay(), 1500); // Clear after showing error
-            }
-        }
+function calculate() {
+    const display = document.getElementById('display');
+    try {
+        display.value = eval(display.value);
+    } catch {
+        display.value = 'Error';
+    }
+}
