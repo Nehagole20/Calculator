@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Calculator</title>
+    <style>
+         /* Reset and basic styling */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    color: #fff;
+}
+
+.calculator {
+    background: #222;
+    border-radius: 16px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 1.5rem;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #333;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    height: 60px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background: #4ca1af;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    background: #3b88a1;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:nth-child(16), button:nth-child(15) {
+    background: #e74c3c;
+}
+
+button:nth-child(16):hover {
+    background: #c0392b;
+}
+
+@media (max-width: 600px) {
+    #display {
+        font-size: 1.2rem;
+        height: 50px;
+    }
+
+    button {
+        font-size: 1rem;
+        height: 50px;
+    }
+}
+    </style>
+   
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+
+        <div class="keys">
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+<script >
+    
+function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+function calculate() {
+    const display = document.getElementById('display');
+    try {
+        display.value = eval(display.value);
+    } catch {
+        display.value = 'Error';
+    }
+}
+</script>
+</body>
+</html>
